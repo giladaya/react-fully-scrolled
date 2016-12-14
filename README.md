@@ -5,6 +5,10 @@
 A full-page scroll component for react with support for touch events
 Inspired by [react-fullpage](https://github.com/Toxni/react-fullPage)
 
+* Simple  
+* Performant  
+* Touch support
+
 
 [Live Demo](https://giladaya.github.io/react-fully-scrolled/)
 
