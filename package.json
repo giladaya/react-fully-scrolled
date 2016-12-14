@@ -1,7 +1,7 @@
 {
   "name": "react-fully-scrolled",
   "version": "1.0.0",
-  "description": "react-fully-scrolled React component",
+  "description": "Full page scrolling for react",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
   "module": "es/index.js",
@@ -17,22 +17,29 @@
     "start": "nwb serve-react-demo",
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
-    "test:watch": "nwb test-react --server"
+    "test:watch": "nwb test-react --server",
+    "gh-pages:deploy": "nwb build-demo && node_modules/gh-pages/bin/gh-pages -d demo/dist"
   },
   "dependencies": {},
   "peerDependencies": {
     "react": "15.x"
   },
   "devDependencies": {
+    "gh-pages": "^0.12.0",
     "nwb": "0.13.x",
     "react": "^15.4.1",
     "react-dom": "^15.4.1"
   },
-  "author": "",
-  "homepage": "",
+  "author": "Gilad Dayagi",
+  "homepage": "https://giladaya.github.io/react-fully-scrolled/",
   "license": "MIT",
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/giladaya/react-fully-scrolled.git"
+  },
   "keywords": [
-    "react-component"
+    "react-component",
+    "full-page",
+    "scroll"
   ]
 }
