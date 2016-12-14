@@ -20,7 +20,7 @@ class Scroller extends Component {
   static defaultProps = {
     children: [],
     easing: 'cubic-bezier(0.19, 1, 0.22, 1)',
-    initialPage: 1,
+    initialPage: 1,        // 1-based !
     isEnabled: true,
     onAfterScroll: function () {},
     onBeforeScroll: function () {},
@@ -89,6 +89,15 @@ class Scroller extends Component {
 
     delete window.fpTurnTo
     delete document.fpTurnTo
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.children.length != this.totalPages) {
+      this.totalPages = this.props.children.length
+      if (this.state.curPage > this.totalPages) {
+        this.turnTo(this.totalPages)
+      }
+    }
   }
 
   resize() {
