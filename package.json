@@ -22,7 +22,8 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "react": "15.x"
+    "react": "15.x",
+    "react-dom": "15.x"
   },
   "devDependencies": {
     "gh-pages": "^0.12.0",
