@@ -10,6 +10,8 @@ Inspired by [react-fullpage](https://github.com/Toxni/react-fullPage)
 
 ## Usage
 
+`npm install react-fully-scrolled`  
+
 ### Simple Example
 
 ```js
@@ -51,21 +53,8 @@ render(<Pages />, document.getElementById('root'));
 When the component is mounted, a function is added to the global scope:  
 `window.fpTurnTo(pageNum)`
 
-
-## Development
-
-### Install
-`npm install react-fully-scrolled`
-
-### Run
-Run development server with the example  
-`npm start`.
-
-### Test
-Run tests once: `npm test`
-
-### Other
-See more commands in package.json and [the generator](https://github.com/insin/nwb)
+## Contributing
+See [CONTRIBUTING.md](blob/master/CONTRIBUTING.md)
 
 
 [npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
