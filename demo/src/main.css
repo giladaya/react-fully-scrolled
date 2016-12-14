@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  background: -webkit-repeating-linear-gradient(45deg, #ddd, #ddd 20px, #eee 20px, #eee 40px);
+  background: repeating-linear-gradient(45deg, #ebebeb, #ebebeb 20px, #eee 20px, #eee 40px);
+}
+
+.github-corner svg {
+    z-index: 1000;
+}
+
+.section {
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+}
+#section_one {
+  background-color: #FF8888;
+}
+#section_two {
+  background-color: #88FF88;
+}
+#section_three {
+  background-color: #8888FF;
+}
+#section_four {
+  background-color: #88FFFF;
+}

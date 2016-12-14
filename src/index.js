@@ -1,9 +1,4 @@
-import React from 'react'
+import Scroller from './Scroller';
+import Section from './Section';
 
-export default React.createClass({
-  render() {
-    return <div>
-      <h2>Welcome to React components</h2>
-    </div>
-  }
-})
+module.exports = { Scroller, Section };
