@@ -54,7 +54,7 @@ When the component is mounted, a function is added to the global scope:
 `window.fpTurnTo(pageNum)`
 
 ## Contributing
-See [CONTRIBUTING.md](blob/master/CONTRIBUTING.md)
+See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 
 [npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
