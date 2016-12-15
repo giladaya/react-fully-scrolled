@@ -5,10 +5,6 @@ import './main.css';
 import { Scroller, Section } from '../../src';
 
 /* eslint-disable no-console */
-function onBeforeScroll(from, to) {
-  console.log(`Scrolling from ${from} to ${to}`)
-}
-
 function onAfterScroll(page) {
   console.log(`Scrolled to ${page}`)
 }
@@ -17,35 +13,60 @@ function onAfterScroll(page) {
 const scrollEnabled = true;
 
 class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sections: ['#FF8888', '#88FF88', '#8888FF', '#88FFFF'],
+    };
+  }
+
+  getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  doFetch = (count) => {
+    let newSections = [];
+    for (let i = 0; i < count; i++) {
+      newSections.push(this.getRandomColor());
+    }
+
+    this.setState({
+      sections: this.state.sections.concat(newSections)
+    })
+  }
+
+  onBeforeScroll = (from, to) => {
+    if (to > from && this.state.sections.length - to < 3) {
+      this.doFetch(3)
+    }
+  }
+
+  renderItems = () => {
+    return this.state.sections.map((color, idx) =>
+      <Section key={`${idx}`}>
+        <div className="section" style={{backgroundColor: color}}>
+          {color}
+        </div>
+      </Section>
+    )
+  }
+
   render() {
     return (
       <div>
         <Scroller
           initialPage={2}
-          onBeforeScroll={onBeforeScroll}
+          onBeforeScroll={this.onBeforeScroll}
           onAfterScroll={onAfterScroll}
           isEnabled={scrollEnabled}
         >
-          <Section key="one">
-            <div id="section_one" className="section">
-              One
-            </div>
-          </Section>
-          <Section key="two">
-            <div id="section_two" className="section">
-              Two
-            </div>
-          </Section>
-          <Section key="three">
-            <div id="section_three" className="section">
-              Three
-            </div>
-          </Section>
-          <Section key="four">
-            <div id="section_four" className="section">
-              Four
-            </div>
-          </Section>
+          {this.renderItems()}
         </Scroller>
       </div>
     )
