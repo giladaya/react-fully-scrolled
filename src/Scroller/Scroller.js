@@ -113,12 +113,16 @@ class Scroller extends Component {
   //--------------
 
   handle(delta) {
-    if (delta < 0 && (this.state.curPage < this.totalPages)) {
-      this.enableTransition()
-      this.turnTo(this.state.curPage + 1);
-    } else if (delta > 0 && this.state.curPage > 1) {
-      this.enableTransition()
-      this.turnTo(this.state.curPage - 1);
+    if (delta < 0) {
+      if (this.state.curPage < this.totalPages) {
+        this.enableTransition()
+        this.turnTo(this.state.curPage + 1);
+      }
+    } else {
+      if (this.state.curPage > 1) {
+        this.enableTransition()
+        this.turnTo(this.state.curPage - 1);
+      }
     }
   }
 
@@ -136,7 +140,10 @@ class Scroller extends Component {
       }
     } else if (event.detail) {
       delta = -event.detail / 3;
+    } else if (event.deltaY) {
+      delta = -event.deltaY / 3
     }
+    console.log(event.deltaMode, event.DOM_DELTA_PIXEL)
 
     if (delta) {
       this.handle(delta);
@@ -252,9 +259,12 @@ class Scroller extends Component {
 
   // assign styles to element
   setStyles = (style) => {
-    const container = this.containerEl;
-    Object.keys(style).forEach(function (key) {
-      container.style[key] = style[key]
+    // const container = this.containerEl;
+    // Object.keys(style).forEach(function (key) {
+    //   container.style[key] = style[key]
+    // })
+    Object.keys(style).forEach( (key) => {
+      this.containerEl.style[key] = style[key]
     })
   }
 
