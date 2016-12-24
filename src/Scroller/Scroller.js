@@ -143,7 +143,6 @@ class Scroller extends Component {
     } else if (event.deltaY) {
       delta = -event.deltaY / 3
     }
-    console.log(event.deltaMode, event.DOM_DELTA_PIXEL)
 
     if (delta) {
       this.handle(delta);
