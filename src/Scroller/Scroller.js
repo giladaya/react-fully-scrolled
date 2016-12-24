@@ -92,7 +92,7 @@ class Scroller extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.children.length != this.totalPages) {
+    if (this.props.children.length !== this.totalPages) {
       this.totalPages = this.props.children.length
       if (this.state.curPage > this.totalPages) {
         this.turnTo(this.totalPages)
@@ -119,10 +119,12 @@ class Scroller extends Component {
         this.turnTo(this.state.curPage + 1);
       }
     } else {
+      /* eslint-disable no-lonely-if */
       if (this.state.curPage > 1) {
         this.enableTransition()
         this.turnTo(this.state.curPage - 1);
       }
+      /* eslint-enable no-lonely-if */
     }
   }
 
@@ -262,7 +264,7 @@ class Scroller extends Component {
     // Object.keys(style).forEach(function (key) {
     //   container.style[key] = style[key]
     // })
-    Object.keys(style).forEach( (key) => {
+    Object.keys(style).forEach((key) => {
       this.containerEl.style[key] = style[key]
     })
   }

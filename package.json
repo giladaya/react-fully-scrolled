@@ -18,6 +18,7 @@
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server",
+    "test:lint": "node_modules/eslint/bin/eslint.js src --ext .js --ext .jsx --cache",
     "prepublish": "npm run build",
     "gh-pages:deploy": "nwb build-demo && node_modules/gh-pages/bin/gh-pages -d demo/dist"
   },
@@ -27,6 +28,12 @@
     "react-dom": "15.x"
   },
   "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.8.0",
     "gh-pages": "^0.12.0",
     "nwb": "0.13.x",
     "react": "^15.4.1",
