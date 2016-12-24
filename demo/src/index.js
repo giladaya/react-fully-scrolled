@@ -4,6 +4,11 @@ import {render} from 'react-dom'
 import './main.css';
 import { Scroller, Section } from '../../src';
 
+// mobile safari compatibility
+document.ontouchmove = function(ev) {
+  ev.preventDefault();
+}
+
 /* eslint-disable no-console */
 function onAfterScroll(page) {
   console.log(`Scrolled to ${page}`)
