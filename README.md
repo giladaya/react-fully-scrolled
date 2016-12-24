@@ -2,7 +2,7 @@
 
 [![npm package][npm-badge]][npm]
 
-A full-page scroll component for react with support for touch events
+A full-page scroll component for react with support for touch events.  
 Inspired by [react-fullpage](https://github.com/Toxni/react-fullPage)
 
 * Simple  
@@ -15,6 +15,13 @@ Inspired by [react-fullpage](https://github.com/Toxni/react-fullPage)
 ## Usage
 
 `npm install react-fully-scrolled`  
+
+For mobile compatibility, make sure to disable touchmove events, like so: 
+```js
+document.ontouchmove = function(ev) {
+  ev.preventDefault();
+}
+```
 
 ### Simple Example
 
