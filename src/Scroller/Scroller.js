@@ -74,8 +74,8 @@ class Scroller extends Component {
 
     this.addWheelEvent();
     this.addTouchEvents();
-    window.addEventListener('resize', this.resize.bind(this), false);
-    document.addEventListener('resize', this.resize.bind(this), false);
+    window.addEventListener('resize', this.resize, false);
+    document.addEventListener('resize', this.resize, false);
 
     window.fpTurnTo = document.fpTurnTo = this.turnTo.bind(this);
   }
@@ -84,8 +84,8 @@ class Scroller extends Component {
     // cleanup
     this.removeWheelEvent()
     this.removeTouchEvents()
-    window.removeEventListener('resize', this.resize.bind(this), false);
-    document.removeEventListener('resize', this.resize.bind(this), false);
+    window.removeEventListener('resize', this.resize, false);
+    document.removeEventListener('resize', this.resize, false);
 
     delete window.fpTurnTo
     delete document.fpTurnTo
@@ -100,7 +100,7 @@ class Scroller extends Component {
     }
   }
 
-  resize() {
+  resize = () => {
     const translateyStr = `translatey(-${window.innerHeight * (this.state.curPage - 1)}px)`;
     this.setStyles({
       transform: translateyStr,
