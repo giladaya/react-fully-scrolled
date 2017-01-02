@@ -1,6 +1,10 @@
 # React Fully Scrolled
 
-[![npm package][npm-badge]][npm]
+[![NPM version][npm-image]][npm-url]
+
+[npm-image]: http://img.shields.io/npm/v/react-fully-scrolled.svg?style=flat-square
+[npm-url]: http://npmjs.org/package/react-fully-scrolled
+
 
 A full-page scroll component for react with support for touch events.  
 Inspired by [react-fullpage](https://github.com/Toxni/react-fullPage)
@@ -66,7 +70,3 @@ When the component is mounted, a function is added to the global scope:
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md)
-
-
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/react-fully-scrolled
