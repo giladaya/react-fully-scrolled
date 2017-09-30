@@ -37,7 +37,7 @@ class Scroller extends Component {
     onAfterScroll: PropTypes.func,
     onBeforeScroll: PropTypes.func,
     swipeSensitivity: PropTypes.number,
-    transDuration: PropTypes.number, //seconds
+    transDuration: PropTypes.number, // seconds
   };
 
 

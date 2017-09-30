@@ -1,11 +1,11 @@
 import React from 'react'
-import {render} from 'react-dom'
+import { render } from 'react-dom'
 
 import './main.css';
 import { Scroller, Section } from '../../src';
 
 // mobile safari compatibility
-document.ontouchmove = function(ev) {
+document.ontouchmove = function (ev) {
   ev.preventDefault();
 }
 
@@ -26,23 +26,23 @@ class Demo extends React.Component {
     };
   }
 
-  getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++ ) {
-        color += letters[Math.floor(Math.random() * 16)];
+  static getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
   }
 
   doFetch = (count) => {
-    let newSections = [];
+    const newSections = [];
     for (let i = 0; i < count; i++) {
       newSections.push(this.getRandomColor());
     }
 
     this.setState({
-      sections: this.state.sections.concat(newSections)
+      sections: this.state.sections.concat(newSections),
     })
   }
 
@@ -52,15 +52,13 @@ class Demo extends React.Component {
     }
   }
 
-  renderItems = () => {
-    return this.state.sections.map((color, idx) =>
-      <Section key={`${idx}`}>
-        <div className="section" style={{backgroundColor: color}}>
-          {color}
-        </div>
-      </Section>
+  renderItems = () => this.state.sections.map((color, idx) =>
+    <Section key={`${idx}`}>
+      <div className="section" style={{ backgroundColor: color }}>
+        {color}
+      </div>
+    </Section>
     )
-  }
 
   render() {
     return (
@@ -78,4 +76,4 @@ class Demo extends React.Component {
   }
 }
 
-render(<Demo/>, document.querySelector('#demo'))
+render(<Demo />, document.querySelector('#demo'))
