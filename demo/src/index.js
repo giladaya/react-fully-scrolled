@@ -38,7 +38,7 @@ class Demo extends React.Component {
   doFetch = (count) => {
     const newSections = [];
     for (let i = 0; i < count; i++) {
-      newSections.push(this.getRandomColor());
+      newSections.push(Demo.getRandomColor());
     }
 
     this.setState({
