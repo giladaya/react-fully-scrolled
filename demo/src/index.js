@@ -68,6 +68,7 @@ class Demo extends React.Component {
           onBeforeScroll={this.onBeforeScroll}
           onAfterScroll={onAfterScroll}
           isEnabled={scrollEnabled}
+          transDuration={0.7}
         >
           {this.renderItems()}
         </Scroller>
