@@ -79,6 +79,9 @@ class Scroller extends Component {
     document.addEventListener('resize', this.resize, false);
 
     window.fpTurnTo = document.fpTurnTo = this.turnTo.bind(this);
+
+    this.prevTime = new Date().getTime();
+    this.scrollings = [];
   }
 
   componentWillUnmount() {
@@ -99,6 +102,17 @@ class Scroller extends Component {
         this.turnTo(this.totalPages)
       }
     }
+  }
+
+  getAverage = (elements, number) => {
+    let sum = 0;
+    const lastElements = elements.slice(Math.max(elements.length - number, 1));
+
+    for (let i = 0; i < lastElements.length; i++) {
+      sum += lastElements[i];
+    }
+
+    return Math.ceil(sum / number);
   }
 
   resize = () => {
@@ -130,26 +144,29 @@ class Scroller extends Component {
   }
 
   onWheel = (event) => {
-    if (!this.props.isEnabled || this.isAnimating) {
-      return
-    }
+    if (!this.props.isEnabled) return;
 
-    let delta = 0;
+    const curTime = new Date().getTime();
 
-    if (event.wheelDelta) {
-      delta = event.wheelDelta / 120;
-      if (window.opera) {
-        delta = -delta;
-      }
-    } else if (event.detail) {
-      delta = -event.detail / 3;
-    } else if (event.deltaY) {
-      delta = -event.deltaY / 3
-    }
+    const value = event.wheelDelta || -event.deltaY || -event.detail;
+    const delta = Math.max(-1, Math.min(1, value));
 
-    if (delta) {
-      this.handle(delta);
-    }
+    if (this.scrollings.length > 149) this.scrollings.shift();
+    this.scrollings.push(Math.abs(value));
+
+    const timeDiff = curTime - this.prevTime;
+    this.prevTime = curTime;
+    if (timeDiff > 200) this.scrollings = [];
+
+    if (this.isAnimating) return;
+
+    const averageEnd = this.getAverage(this.scrollings, 10);
+    const averageMiddle = this.getAverage(this.scrollings, 70);
+    const isAccelerating = averageEnd >= averageMiddle;
+
+    if (!isAccelerating) return;
+
+    if (delta) this.handle(delta);
   }
 
   removeWheelEvent() {
