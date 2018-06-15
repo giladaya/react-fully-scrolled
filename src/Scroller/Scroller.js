@@ -26,6 +26,7 @@ class Scroller extends Component {
     onAfterScroll: function () {},
     onBeforeScroll: function () {},
     swipeSensitivity: 100, // how much Y movement there should be to be considered a scroll
+    touchSensitivity: 50, // how much Y movement before the page starts to move
     transDuration: 0.5,    // seconds
   }
 
@@ -37,6 +38,7 @@ class Scroller extends Component {
     onAfterScroll: PropTypes.func,
     onBeforeScroll: PropTypes.func,
     swipeSensitivity: PropTypes.number,
+    touchSensitivity: PropTypes.number,
     transDuration: PropTypes.number, // seconds
   };
 
@@ -215,7 +217,10 @@ class Scroller extends Component {
     if (!this.props.isEnabled || this.isAnimating || !this.isInSwipe) return
 
     const touchPosY = e.changedTouches[0].clientY;
-    this.touchMoveDelta = touchPosY - this.touchStartPosY;
+    const delta = touchPosY - this.touchStartPosY;
+    if ((delta < 0 && delta > -this.props.touchSensitivity) || (delta > 0 && delta < this.props.touchSensitivity)) return;
+
+    this.touchMoveDelta = delta;
 
 
     // const delta = touchPosY - this.touchStartPosY;
