@@ -26,7 +26,7 @@ class Scroller extends Component {
     onAfterScroll: function () {},
     onBeforeScroll: function () {},
     swipeSensitivity: 100, // how much Y movement there should be to be considered a scroll
-    transDuration: 0.5,    // seconds
+    transDuration: 1,    // seconds
   }
 
   static propTypes = {
